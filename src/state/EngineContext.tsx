@@ -1,8 +1,11 @@
-import React, {createContext, Dispatch, useReducer} from 'react';
+import React, {createContext, useReducer} from 'react';
+import { createActions } from './actions';
 import { engineReducer } from './reducer';
 
 export interface PlayerState {
-    phaseIndex: number;
+    name?: string;
+    playerId: number;
+    completedPhase: number;
     score: number;
 }
 
@@ -22,13 +25,14 @@ const defaultEngineState:EngineState = {
     isRoundInProgress: false
 }
 
-export const EngineContext = createContext<[EngineState, Dispatch<any>]>([defaultEngineState, s=>s]);
+export const EngineContext = createContext<[EngineState, ReturnType<typeof createActions>?]>([defaultEngineState, undefined]);
 
 export const EngineProvider: React.FC = ({children}) => {
     const [state, dispatch] = useReducer(engineReducer, defaultEngineState);
+    const actions = createActions(dispatch);
     
     return (
-        <EngineContext.Provider value={[state, dispatch]}>
+        <EngineContext.Provider value={[state, actions]}>
             {children}
         </EngineContext.Provider>
     );

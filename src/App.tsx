@@ -1,8 +1,8 @@
 import React, { } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import { EngineProvider } from './EngineContext';
-import { Game } from './Game';
+import { EngineProvider } from './state/EngineContext';
+import { Game } from './components/Game';
 
 function App() {
   return (
