@@ -1,13 +1,5 @@
 import { Dispatch } from "react";
-
-export type GameAction =
-  | { type: "addPlayer"; data: { name?: string } }
-  | { type: "start" }
-  | { type: "endRound" }
-  | { type: "adjustPhase"; data: { playerId: number; adjustment: 1 | -1 } }
-  | { type: "adjustScore"; data: { playerId: number; adjustment: number } }
-  | { type: "commitScores" }
-  | { type: "reset" };
+import { GameAction } from "./models";
 
 export const createActions = (
   dispatch: Dispatch<GameAction>

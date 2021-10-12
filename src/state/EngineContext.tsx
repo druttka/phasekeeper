@@ -1,24 +1,9 @@
 import React, {createContext, useReducer} from 'react';
 import { createActions } from './actions';
+import { EngineState } from './models';
 import { engineReducer } from './reducer';
 
-export interface PlayerState {
-    name?: string;
-    playerId: number;
-    completedPhase: number;
-    score: number;
-}
-
-export type GameState = 'init' | 'active' | 'complete';
-
-export interface EngineState  {
-    gameState: GameState;
-    players: PlayerState[];
-    hasGameStarted: boolean;
-    isRoundInProgress: boolean;
-};
-
-const defaultEngineState:EngineState = {
+const defaultEngineState: EngineState = {
     gameState: 'init',
     players: [],
     hasGameStarted: false,

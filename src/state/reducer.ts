@@ -1,5 +1,4 @@
-import { GameAction } from "./actions";
-import { EngineState } from "./EngineContext";
+import { GameAction, EngineState } from "./models";
 
 export const engineReducer = (
   state: EngineState,
