@@ -1,25 +1,57 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
+import { standardPhases } from '../state';
 import { EngineContext } from '../state/EngineContext';
 
 export const GameSetup: React.FC = () => {
-    const [state, actions] = useContext(EngineContext);
-    
+    const [{players}, actions] = useContext(EngineContext);
+    const [playerName, setPlayerName] = useState<string>('');
+
+    const anyPlayersDefined = players && players.length > 0;
+
     return (
         <div>
-            {state.players.map(p => <div>A player {p.playerId}</div>)}
-            <div onClick={e => { actions?.addPlayer()}}>TODO: UI to add players (for now, click here to simulate)</div>
-            <div onClick={e => { actions?.start()}}>Start the round!</div>
+            <div>Are you tired of finding pen and paper to track your scores while playing  <a href="https://www.mattelgames.com/en-us/cards/phase-10" rel="noreferrer" target="_blank">Phase 10</a>?</div>
+            <div>Phasekeeper can help!</div>
+            <div>To get started, let's add your players:</div>
+
+
+            {anyPlayersDefined && (
+                <div>
+                    <div>Current Players:</div>
+                    <div>
+                        {players.map(p => <div key={`player-${p.playerId}`}>A player {p.name || p.playerId}</div>)}
+                    </div>
+                </div>
+            )}
+
+
+            <div>
+                <input type="text" placeholder="new player" value={playerName} aria-label="Player Name" onChange={(e) => { setPlayerName(e?.target?.value)}}></input>
+                <button onClick={e => { actions?.addPlayer(playerName)}}>Add player with name: </button>
+            </div>
+
+            <button onClick={e => { actions?.start()}}>Start the round!</button>
         </div>
     )
 }
 
 export const RoundInProgress: React.FC = () => {
-    const [state, actions] = useContext(EngineContext);
+    const [{players}, actions] = useContext(EngineContext);
 
     return (
         <div>
-            {state.players.map(p => (<div>Player {p.playerId} has completed Phase {p.completedPhase}</div>))}
-            <div onClick={e => {actions?.endRound()}}>TODO: Round in progress, render current player phases (for now, click here to end round)</div>
+            {players.map(p => {
+                const {playerId, name, completedPhase} = p;
+                const displayName = name || `Player ${playerId}`;
+                const nextPhase = standardPhases[completedPhase + 1];
+
+                return !!nextPhase && (<div key={`player-${p.playerId}`} >{displayName} needs {nextPhase.goals.reduce((agg, goal) => {
+                    const nextGoal = `a ${goal.goalType} of ${goal.successThreshold}`
+                    return agg ? agg + ` and ${nextGoal}` : `${nextGoal}`;
+                }, '')}</div>)
+            })}
+
+            <button onClick={e => {actions?.endRound()}}>Go to scoring</button>
         </div>
     )
 }

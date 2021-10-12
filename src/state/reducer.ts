@@ -8,6 +8,7 @@ export const engineReducer = (
 
   switch (action.type) {
     case "addPlayer":
+      console.log(`adding ${action.data.name}`)
       return {
         ...state,
         players: [
@@ -39,6 +40,9 @@ export const engineReducer = (
           ? p
           : { ...p, completedPhase: p.completedPhase + adjustment }
       );
+
+      console.log(`next players: ${JSON.stringify(nextPlayers)}`);
+
       return {
         ...state,
         players: nextPlayers,
@@ -56,6 +60,8 @@ export const engineReducer = (
     }
     case "commitScores":
       const isGameOver = players.some((p) => p.completedPhase >= 10);
+      console.log(`isGameOver: ${isGameOver}`);
+
       return isGameOver
         ? {
             ...state,

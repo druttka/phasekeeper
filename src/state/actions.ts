@@ -6,7 +6,7 @@ export const createActions = (
 ) => {
   return {
     addPlayer: (name?: string) =>
-    dispatch({ type: "addPlayer", data: { name } }),
+      dispatch({ type: "addPlayer", data: { name } }),
     start: () => dispatch({ type: "start" }),
     endRound: () => dispatch({ type: "endRound" }),
     adjustPhase: (playerId: number, adjustment: 1 | -1) => dispatch({ type: "adjustPhase", data: { playerId, adjustment } }),
