@@ -9,12 +9,16 @@ import { Scoring } from "./Scoring";
 export const Game: React.FC = () => {
   const [state] = useContext(EngineContext);
 
-  switch (state.gameState) {
-    case "init":
-      return <GameSetup />;
-    case "active":
-      return state.isRoundInProgress ? <RoundInProgress /> : <Scoring />;
-    case "complete":
-      return <EndScreen />;
-  }
+  const scene = (function () {
+    switch (state.gameState) {
+      case "init":
+        return <GameSetup />;
+      case "active":
+        return state.isRoundInProgress ? <RoundInProgress /> : <Scoring />;
+      case "complete":
+        return <EndScreen />;
+    }
+  })();
+
+  return <div className="Game-view">{scene}</div>;
 };

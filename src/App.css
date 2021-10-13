@@ -1,5 +1,7 @@
 .App {
   text-align: center;
+  display: flex;
+  flex-direction: column;
 }
 
 .App-logo {
@@ -7,9 +9,24 @@
   pointer-events: none;
 }
 
+.Phasekeeper-logo {
+  pointer-events: none;
+  margin: 0 10px 0 10px;
+  color: red;
+  border: 3px solid red;
+  background-color: white;
+  border-radius: 10px;
+  padding: 5px;
+  transform: rotate(5deg);
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
+  }
+
+  .Phasekeeper-logo {
+    animation: App-logo-spin infinite 2s alternate-reverse;
   }
 }
 
@@ -21,11 +38,30 @@
   justify-content: flex-start;
   font-size: calc(10px + 2vmin);
   color: white;
-  padding-left: 1vmin;
 }
 
 .App-link {
   color: #61dafb;
+}
+
+.Game-view {
+  display: flex;
+  flex-direction: column;
+}
+
+.Game-setup-instruction {
+  font-style: italic;
+  margin-top: 3vmin;
+}
+
+a,
+a:visited,
+a:active {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
 }
 
 @keyframes App-logo-spin {
@@ -33,6 +69,6 @@
     transform: rotate(0deg);
   }
   to {
-    transform: rotate(360deg);
+    transform: rotate(10deg);
   }
 }

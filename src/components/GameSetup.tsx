@@ -10,9 +10,8 @@ export const GameSetup: React.FC = () => {
 
   return (
     <div>
-      <div>
-        Are you tired of finding pen and paper to track your scores while
-        playing
+      <div className="Game-setup-instruction">
+        Throw away your pen and paper! Let Phasekeeper track your game of{" "}
         <a
           href="https://www.mattelgames.com/en-us/cards/phase-10"
           rel="noreferrer"
@@ -20,10 +19,11 @@ export const GameSetup: React.FC = () => {
         >
           Phase 10
         </a>
-        ?
+        !
       </div>
-      <div>Phasekeeper can help!</div>
-      <div>To get started, let's add your players:</div>
+      <div className="Game-setup-instruction">
+        To get started, let's add your players:
+      </div>
 
       {anyPlayersDefined && (
         <div>
