@@ -2,7 +2,8 @@ export interface PlayerState {
   name?: string;
   playerId: number;
   completedPhase: number;
-  score: number;
+  lastCommittedScore: number;
+  stagedScoreAdjustment: number;
 }
 
 export type GameState = "init" | "active" | "complete";
@@ -12,7 +13,8 @@ export type GameAction =
   | { type: "start" }
   | { type: "endRound" }
   | { type: "adjustPhase"; data: { playerId: number; adjustment: 1 | -1 } }
-  | { type: "adjustScore"; data: { playerId: number; adjustment: number } }
+  | { type: "adjustStagedScoring"; data: { playerId: number; adjustment: number } }
+  | { type: "discardStagedScoreAdustments"; data: { playerId: number } }
   | { type: "commitScores" }
   | { type: "reset" };
 

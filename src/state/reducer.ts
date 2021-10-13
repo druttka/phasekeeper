@@ -1,4 +1,4 @@
-import { GameAction, EngineState } from "./models";
+import { EngineState,GameAction } from "./models";
 
 export const engineReducer = (
   state: EngineState,
@@ -15,7 +15,8 @@ export const engineReducer = (
           ...players,
           {
             completedPhase: 0,
-            score: 0,
+            lastCommittedScore: 0,
+            stagedScoreAdjustment: 0,
             playerId: players.length,
             name: action.data.name,
           },
@@ -51,7 +52,7 @@ export const engineReducer = (
     case "adjustScore": {
       const { adjustment, playerId } = action.data;
       const nextPlayers = players.map((p) =>
-        p.playerId !== playerId ? p : { ...p, score: p.score + adjustment }
+        p.playerId !== playerId ? p : { ...p, stagedScoreAdjustment: p.stagedScoreAdjustment + adjustment }
       );
       return {
         ...state,

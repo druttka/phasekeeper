@@ -1,4 +1,5 @@
 import { Dispatch } from "react";
+
 import { GameAction } from "./models";
 
 export const createActions = (dispatch: Dispatch<GameAction>) => {
@@ -9,8 +10,10 @@ export const createActions = (dispatch: Dispatch<GameAction>) => {
     endRound: () => dispatch({ type: "endRound" }),
     adjustPhase: (playerId: number, adjustment: 1 | -1) =>
       dispatch({ type: "adjustPhase", data: { playerId, adjustment } }),
-    adjustScore: (playerId: number, adjustment: number) =>
-      dispatch({ type: "adjustScore", data: { playerId, adjustment } }),
+    adjustStagedScoring: (playerId: number, adjustment: number) =>
+      dispatch({ type: "adjustStagedScoring", data: { playerId, adjustment } }),
+    discardStagedScoreAdustments: (playerId: number) =>
+      dispatch({ type: "discardStagedScoreAdustments", data: { playerId } }),
     commitScores: () => dispatch({ type: "commitScores" }),
     reset: () => dispatch({ type: "reset" }),
   };
