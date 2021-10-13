@@ -8,7 +8,7 @@ export const engineReducer = (
 
   switch (action.type) {
     case "addPlayer":
-      console.log(`adding ${action.data.name}`)
+      console.log(`adding ${action.data.name}`);
       return {
         ...state,
         players: [

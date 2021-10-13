@@ -16,7 +16,6 @@ export type GameAction =
   | { type: "commitScores" }
   | { type: "reset" };
 
-  
 export interface EngineState {
   gameState: GameState;
   players: PlayerState[];

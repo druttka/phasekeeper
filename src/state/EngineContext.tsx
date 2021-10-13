@@ -1,24 +1,26 @@
-import React, {createContext, useReducer} from 'react';
-import { createActions } from './actions';
-import { EngineState } from './models';
-import { engineReducer } from './reducer';
+import React, { createContext, useReducer } from "react";
+import { createActions } from "./actions";
+import { EngineState } from "./models";
+import { engineReducer } from "./reducer";
 
 const defaultEngineState: EngineState = {
-    gameState: 'init',
-    players: [],
-    hasGameStarted: false,
-    isRoundInProgress: false
-}
+  gameState: "init",
+  players: [],
+  hasGameStarted: false,
+  isRoundInProgress: false,
+};
 
-export const EngineContext = createContext<[EngineState, ReturnType<typeof createActions>?]>([defaultEngineState, undefined]);
+export const EngineContext = createContext<
+  [EngineState, ReturnType<typeof createActions>?]
+>([defaultEngineState, undefined]);
 
-export const EngineProvider: React.FC = ({children}) => {
-    const [state, dispatch] = useReducer(engineReducer, defaultEngineState);
-    const actions = createActions(dispatch);
-    
-    return (
-        <EngineContext.Provider value={[state, actions]}>
-            {children}
-        </EngineContext.Provider>
-    );
-}
+export const EngineProvider: React.FC = ({ children }) => {
+  const [state, dispatch] = useReducer(engineReducer, defaultEngineState);
+  const actions = createActions(dispatch);
+
+  return (
+    <EngineContext.Provider value={[state, actions]}>
+      {children}
+    </EngineContext.Provider>
+  );
+};

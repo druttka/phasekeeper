@@ -1,8 +1,8 @@
-import React, { } from 'react';
-import logo from './logo.svg';
-import './App.css';
-import { EngineProvider } from './state/EngineContext';
-import { Game } from './components/Game';
+import React from "react";
+import logo from "./logo.svg";
+import "./App.css";
+import { EngineProvider } from "./state/EngineContext";
+import { Game } from "./components/Game";
 
 function App() {
   return (
@@ -17,5 +17,5 @@ function App() {
     </div>
   );
 }
-  
+
 export default App;
