@@ -16,5 +16,7 @@ export const createActions = (dispatch: Dispatch<GameAction>) => {
       dispatch({ type: "discardStagedScoreAdustments", data: { playerId } }),
     commitScores: () => dispatch({ type: "commitScores" }),
     reset: () => dispatch({ type: "reset" }),
+    removePlayer: (playerId: number) =>
+      dispatch({ type: "removePlayer", data: { playerId } }),
   };
 };

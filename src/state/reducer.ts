@@ -37,6 +37,12 @@ export const engineReducer = (
         })),
       };
 
+    case "removePlayer":
+      return {
+        ...state,
+        players: players.filter((p) => p.playerId !== action.data.playerId),
+      };
+
     case "endRound":
       return {
         ...state,

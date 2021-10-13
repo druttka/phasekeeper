@@ -13,9 +13,13 @@ export type GameAction =
   | { type: "start" }
   | { type: "endRound" }
   | { type: "adjustPhase"; data: { playerId: number; adjustment: 1 | -1 } }
-  | { type: "adjustStagedScoring"; data: { playerId: number; adjustment: number } }
+  | {
+      type: "adjustStagedScoring";
+      data: { playerId: number; adjustment: number };
+    }
   | { type: "discardStagedScoreAdustments"; data: { playerId: number } }
   | { type: "commitScores" }
+  | { type: "removePlayer"; data: { playerId: number } }
   | { type: "reset" };
 
 export interface EngineState {

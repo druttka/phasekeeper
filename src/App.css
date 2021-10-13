@@ -1,5 +1,4 @@
 .App {
-  text-align: center;
   display: flex;
   flex-direction: column;
 }
@@ -47,11 +46,33 @@
 .Game-view {
   display: flex;
   flex-direction: column;
+  padding: 0 20px;
 }
 
 .Game-setup-instruction {
   font-style: italic;
   margin-top: 3vmin;
+}
+
+.Roster-container {
+  margin: 20px 0;
+}
+
+.Roster-heading {
+  text-decoration: underline;
+}
+
+.Roster-players {
+  padding: 5px 0;
+}
+
+.Roster-player {
+  margin: 5px 0;
+}
+.Roster-remove {
+  color: red;
+  font-style: italic;
+  margin-left: 5px;
 }
 
 a,
