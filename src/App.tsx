@@ -1,8 +1,10 @@
-import React from "react";
-import logo from "./logo.svg";
 import "./App.css";
-import { EngineProvider } from "./state/EngineContext";
+
+import React from "react";
+
 import { Game } from "./components/Game";
+import logo from "./logo.svg";
+import { EngineProvider } from "./state/EngineContext";
 
 function App() {
   return (

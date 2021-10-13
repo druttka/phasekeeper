@@ -12,7 +12,7 @@ export const GameSetup: React.FC = () => {
     <div>
       <div>
         Are you tired of finding pen and paper to track your scores while
-        playing{" "}
+        playing
         <a
           href="https://www.mattelgames.com/en-us/cards/phase-10"
           rel="noreferrer"
