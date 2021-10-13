@@ -11,7 +11,7 @@ export const RoundInProgress: React.FC = () => {
       {players.map((p) => {
         const { playerId, name, completedPhase } = p;
         const displayName = name || `Player ${playerId}`;
-        const nextPhase = standardPhases[completedPhase + 1];
+        const nextPhase = standardPhases[completedPhase];
 
         return (
           !!nextPhase && (
