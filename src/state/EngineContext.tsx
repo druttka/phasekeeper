@@ -9,6 +9,7 @@ const defaultEngineState: EngineState = {
   players: [],
   hasGameStarted: false,
   isRoundInProgress: false,
+  phasesView: "active",
 };
 
 export const EngineContext = createContext<

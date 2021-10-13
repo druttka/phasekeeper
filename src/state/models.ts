@@ -27,6 +27,7 @@ export interface EngineState {
   players: PlayerState[];
   hasGameStarted: boolean;
   isRoundInProgress: boolean;
+  phasesView: "all" | "active";
 }
 
 export type GoalType = "set" | "run" | "color-match";

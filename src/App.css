@@ -75,6 +75,27 @@
   margin-left: 5px;
 }
 
+.PhaseCard-container {
+  display:flex;
+  flex-direction: column;
+}
+
+.PhaseCard-players {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+
+.PhaseCard-player {
+  border-right: 1px solid black;
+  padding-right: 5px;
+  margin-right: 5px;
+}
+
+.PhaseCard-player:last-child {
+  border-right: none;
+}
+
 a,
 a:visited,
 a:active {
