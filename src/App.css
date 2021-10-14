@@ -16,7 +16,6 @@
   background-color: white;
   border-radius: 10px;
   padding: 5px;
-  transform: rotate(5deg);
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -26,6 +25,10 @@
 
   .Phasekeeper-logo {
     animation: App-logo-spin infinite 2s alternate-reverse;
+  }
+
+  .Phasekeeper-logo.no-animate {
+    animation: none;
   }
 }
 
@@ -76,24 +79,28 @@
 }
 
 .PhaseCard-container {
-  display:flex;
-  flex-direction: column;
+  display: flex;
+  flex-direction: row;
+  margin-top: 10px;
+  padding: 10px 5px 10px 5px;
+  border: 1px solid black;
+  justify-content: flex-start;
+  align-items: center;
 }
 
 .PhaseCard-players {
   display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
+  flex-direction: column;
+  border-right: 1px solid black;
+}
+
+.PhaseCard-goal {
+  align-self: center;
+  margin-left: 10px;
 }
 
 .PhaseCard-player {
-  border-right: 1px solid black;
-  padding-right: 5px;
   margin-right: 5px;
-}
-
-.PhaseCard-player:last-child {
-  border-right: none;
 }
 
 a,
@@ -108,9 +115,9 @@ a:hover {
 
 @keyframes App-logo-spin {
   from {
-    transform: rotate(0deg);
+    transform: rotate(10deg);
   }
   to {
-    transform: rotate(10deg);
+    transform: rotate(0deg);
   }
 }

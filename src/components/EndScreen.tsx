@@ -1,10 +1,9 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 
-import { standardPhases } from "../state";
 import { EngineContext } from "../state/EngineContext";
 
 export const EndScreen: React.FC = () => {
-  const [state, actions] = useContext(EngineContext);
+  const [, actions] = useContext(EngineContext);
   return (
     <div
       onClick={(e) => {

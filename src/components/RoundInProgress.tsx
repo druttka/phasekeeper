@@ -5,11 +5,17 @@ import { EngineContext } from "../state/EngineContext";
 
 interface PhaseCardProps {
   phase: PhaseDefintion;
+  phaseIndex: number;
   players: PlayerState[];
   phaseView: "all" | "active";
 }
 
-const PhaseCard: React.FC<PhaseCardProps> = ({ phase, players, phaseView }) => {
+const PhaseCard: React.FC<PhaseCardProps> = ({
+  phase,
+  phaseIndex,
+  players,
+  phaseView,
+}) => {
   const doesPhaseHavePlayers = players && players.length > 0;
 
   if (phaseView === "active" && !doesPhaseHavePlayers) {
@@ -23,20 +29,24 @@ const PhaseCard: React.FC<PhaseCardProps> = ({ phase, players, phaseView }) => {
 
   return (
     <div className="PhaseCard-container">
-      <div className="PhaseCard-goal">{goalText}</div>
+      <span className="Phasekeeper-logo no-animate">{phaseIndex + 1}</span>
       <div className="PhaseCard-players">
         {players.map((p) => (
-          <span className="PhaseCard-player">
+          <span
+            key={`players-player-${p.playerId}`}
+            className="PhaseCard-player"
+          >
             {p.name || `Player ${p.playerId}`} ({p.lastCommittedScore})
           </span>
         ))}
       </div>
+      <div className="PhaseCard-goal">{goalText}</div>
     </div>
   );
 };
 
 export const RoundInProgress: React.FC = () => {
-  const [{ players, phasesView }] = useContext(EngineContext);
+  const [{ players, phasesView }, actions] = useContext(EngineContext);
 
   const playersByPhase = players.reduce<Record<number, PlayerState[]>>(
     (agg, p) => {
@@ -54,12 +64,27 @@ export const RoundInProgress: React.FC = () => {
   const divs = standardPhases.map((phaseDefinition, phaseIndex) => {
     return (
       <PhaseCard
+        key={`phaseCard-${phaseIndex}`}
         phase={phaseDefinition}
+        phaseIndex={phaseIndex}
         phaseView={phasesView}
         players={playersByPhase[phaseIndex]}
       ></PhaseCard>
     );
   });
 
-  return <div>{divs}</div>;
+  return (
+    <div>
+      {divs}
+      <button
+        style={{ marginTop: 10 }}
+        className="action-button"
+        onClick={(e) => {
+          actions?.endRound();
+        }}
+      >
+        Next Phase
+      </button>
+    </div>
+  );
 };

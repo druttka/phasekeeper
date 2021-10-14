@@ -1,6 +1,5 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 
-import { standardPhases } from "../state";
 import { EngineContext } from "../state/EngineContext";
 
 export const Scoring: React.FC = () => {
@@ -8,7 +7,9 @@ export const Scoring: React.FC = () => {
   return (
     <div
       onClick={(e) => {
-        state.players.forEach((p) => actions?.adjustPhase(p.playerId, 1));
+        state.players.forEach(
+          (p) => p.playerId % 2 === 0 && actions?.adjustPhase(p.playerId, 1)
+        );
         actions?.commitScores();
       }}
     >
