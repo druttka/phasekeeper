@@ -88,15 +88,21 @@ export const engineReducer = (
     }
     case "commitScores":
       const isGameOver = players.some((p) => p.completedPhase >= 10);
-
+      const nextPlayers = players.map((p) => ({
+        ...p,
+        lastCommittedScore: p.lastCommittedScore + p.stagedScoreAdjustment,
+        stagedScoreAdjustment: 0,
+      }));
       return isGameOver
         ? {
             ...state,
             gameState: "complete",
+            players: nextPlayers,
           }
         : {
             ...state,
             isRoundInProgress: true,
+            players: nextPlayers,
           };
 
     case "reset":

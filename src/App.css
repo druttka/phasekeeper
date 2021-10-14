@@ -103,6 +103,28 @@
   margin-right: 5px;
 }
 
+.ScoreCard-container {
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
+  padding: 10px 5px 10px 5px;
+  border: 1px solid black;
+  justify-content: flex-start;
+}
+
+.ScoreCard-player {
+  display:flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.ScoreCard-slider {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
 a,
 a:visited,
 a:active {

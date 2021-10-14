@@ -33,7 +33,7 @@ const PhaseCard: React.FC<PhaseCardProps> = ({
       <div className="PhaseCard-players">
         {players.map((p) => (
           <span
-            key={`players-player-${p.playerId}`}
+            key={`PhaseCard-player-${p.playerId}`}
             className="PhaseCard-player"
           >
             {p.name || `Player ${p.playerId}`} ({p.lastCommittedScore})
