@@ -72,9 +72,7 @@ export const GameSetup: React.FC = () => {
       <div className="Game-setup-instruction">
         To get started, let's add your players.
       </div>
-
       <Roster />
-
       <button
         disabled={!hasAtLeastTwoPlayers}
         onClick={(e) => {
@@ -83,6 +81,37 @@ export const GameSetup: React.FC = () => {
       >
         Let's play!
       </button>
+      <div className="Game-setup-instruction">
+        Wish this site was an app you could use offline? Try "Add to Home
+        Screen"!
+      </div>
+      <div className="Game-setup-instruction">
+        For more details, see these instructions for{" "}
+        <a
+          href="https://support.google.com/chrome/answer/9658361?hl=en&co=GENIE.Platform%3DAndroid"
+          target="_blank"
+          rel="noreferrer"
+        >
+          Chrome
+        </a>
+        ,{" "}
+        <a
+          href="https://www.howtogeek.com/667910/how-to-add-a-website-to-your-iphone-or-ipad-home-screen/"
+          target="_blank"
+          rel="noreferrer"
+        >
+          Safari
+        </a>
+        , and{" "}
+        <a
+          href="https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps/Installable_PWAs"
+          target="_blank"
+          rel="noreferrer"
+        >
+          Firefox
+        </a>
+        .
+      </div>
     </div>
   );
 };

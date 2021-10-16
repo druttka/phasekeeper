@@ -4,18 +4,21 @@
 }
 
 .App-logo {
-  height: 10vmin;
+  height: 3vmin;
   pointer-events: none;
 }
 
 .Phasekeeper-logo {
   pointer-events: none;
-  margin: 0 10px 0 10px;
+  margin-right: 5px;
   color: red;
   border: 3px solid red;
   background-color: white;
   border-radius: 10px;
   padding: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -37,7 +40,8 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: space-between;
+  padding: 0 10px;
   font-size: calc(10px + 2vmin);
   color: white;
 }
@@ -132,6 +136,11 @@ a:active {
 }
 
 a:hover {
+  text-decoration: underline;
+}
+
+.App-header a {
+  color: white;
   text-decoration: underline;
 }
 
