@@ -52,7 +52,7 @@ const ScoreCard: React.FC<ScoreCardProps> = ({ player }) => {
   const [tens, setTens] = useState(0);
   const [skips, setSkips] = useState(0);
   const [wilds, setWilds] = useState(0);
-  const [completedPhase, setCompletedPhase] = useState(false);
+  const [completedPhase, setCompletedPhase] = useState(true);
 
   useEffect(() => {
     const trueAdjustment = fives * 5 + tens * 10 + skips * 25 + wilds * 50;
