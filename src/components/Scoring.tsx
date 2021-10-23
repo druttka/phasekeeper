@@ -53,33 +53,33 @@ const ScoreCard: React.FC<ScoreCardProps> = ({ player }) => {
   const [skips, setSkips] = useState(0);
   const [wilds, setWilds] = useState(0);
   const [completedPhase, setCompletedPhase] = useState(false);
+  const { name, playerId, stagedScoreAdjustment } = player;
 
   useEffect(() => {
     const trueAdjustment = fives * 5 + tens * 10 + skips * 25 + wilds * 50;
     actions?.adjustStagedScoring(
-      player.playerId,
-      trueAdjustment - player.stagedScoreAdjustment
+      playerId,
+      trueAdjustment - stagedScoreAdjustment
     );
     // Disabling since we're using this only to recalculate.
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [fives, tens, skips, wilds]);
 
+  const checkboxId = `phase-complete-${playerId}`;
+
   return (
     <div className="ScoreCard-container">
-      <div
-        key={`ScoreCard-player-${player.playerId}`}
-        className="ScoreCard-player"
-      >
-        <span>{player.name || `Player ${player.playerId}`}</span>
+      <div key={`ScoreCard-player-${playerId}`} className="ScoreCard-player">
+        <span>{name || `Player ${playerId}`}</span>
         <div>
-          <label htmlFor="phase-complete">Completed Phase?</label>
+          <label htmlFor={checkboxId}>Completed Phase?</label>
           <input
-            id="phase-complete"
+            id={checkboxId}
             type="checkbox"
             checked={completedPhase}
             onChange={(e) => {
               const { checked } = e.target;
-              actions?.adjustPhase(player.playerId, checked ? 1 : -1);
+              actions?.adjustPhase(playerId, checked ? 1 : -1);
               setCompletedPhase(checked);
             }}
           ></input>
@@ -118,7 +118,7 @@ const ScoreCard: React.FC<ScoreCardProps> = ({ player }) => {
         }}
       />
 
-      <span>Round score: {player.stagedScoreAdjustment}</span>
+      <span>Round score: {stagedScoreAdjustment}</span>
     </div>
   );
 };
