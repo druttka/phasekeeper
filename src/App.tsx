@@ -34,6 +34,17 @@ function App() {
           Consider using "Add to Home Screen" to install this free application
           instead of bookmarking the site in your browser!
         </div>
+        <div className="App-report-issues-info">
+          To review known issues or report new ones, come see us on{" "}
+          <a
+            href="https://github.com/druttka/phasekeeper/issues"
+            rel="noreferrer"
+            target="_blank"
+          >
+            GitHub
+          </a>
+          !
+        </div>
       </footer>
     </div>
   );
