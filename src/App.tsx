@@ -16,24 +16,25 @@ function App() {
             alignItems: "center",
           }}
         >
-          <div className="Phasekeeper-logo">10</div>
+          <img
+            className="Phasekeeper-logo"
+            src="/logo512-transparent.png"
+            alt="Phasekeeper logo"
+          />
           <h4>Phasekeeper</h4>
         </div>
-        <div>
-          See it on{" "}
-          <a
-            href="https://github.com/druttka/phasekeeper"
-            target="_blank"
-            rel="noreferrer"
-          >
-            GitHub
-          </a>
-          !
-        </div>
       </header>
-      <EngineProvider>
-        <Game />
-      </EngineProvider>
+      <div className="App-main">
+        <EngineProvider>
+          <Game />
+        </EngineProvider>
+      </div>
+      <footer className="App-footer">
+        <div className="App-footer-install-hint">
+          Consider using "Add to Home Screen" to install this free application
+          instead of bookmarking the site in your browser!
+        </div>
+      </footer>
     </div>
   );
 }
