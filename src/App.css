@@ -183,3 +183,9 @@ a:hover {
     transform: rotate(0deg);
   }
 }
+
+@media all and (display-mode: standalone) {
+  .App-footer {
+    display: none;
+  }
+}
