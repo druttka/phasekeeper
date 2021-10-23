@@ -29,7 +29,7 @@ const PhaseCard: React.FC<PhaseCardProps> = ({
 
   return (
     <div className="PhaseCard-container">
-      <span className="Phasekeeper-logo no-animate">{phaseIndex + 1}</span>
+      <span className="RoundInProgress-phase-indicator">{phaseIndex + 1}</span>
       <div className="PhaseCard-players">
         {players.map((p) => (
           <span
