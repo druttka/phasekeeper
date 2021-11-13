@@ -98,7 +98,7 @@ describe("EndScreen", () => {
       expect(playerOutcomes[0]).toHaveTextContent(`Player 3`);
     });
 
-    test("lists the other players in descending score order", () => {
+    test("sorts the other players with the lowest scores first", () => {
       const { getAllByTestId } = render(
         <EngineProvider initialState={state}>
           <EndScreen />
@@ -151,7 +151,7 @@ describe("EndScreen", () => {
       expect(congratulationsText).toHaveTextContent("Congratulations");
     });
 
-    test("congratulates the player with the lowest score", () => {
+    test("congratulates the player that completed Phase 10 with the lowest score", () => {
       const { getByTestId } = render(
         <EngineProvider initialState={state}>
           <EndScreen />
@@ -184,7 +184,7 @@ describe("EndScreen", () => {
       expect(playerOutcomes[0]).toHaveTextContent(`Player 2`);
     });
 
-    test("lists the other players in descending score order", () => {
+    test("sorts the other players in order of completed phase, then lowest score", () => {
       const { getAllByTestId } = render(
         <EngineProvider initialState={state}>
           <EndScreen />
