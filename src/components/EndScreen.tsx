@@ -5,6 +5,17 @@ import { EngineContext } from "../state/EngineContext";
 export const EndScreen: React.FC = () => {
   const [{ players }, actions] = useContext(EngineContext);
 
+  if (players.length < 1) {
+    return (
+      <div data-testid="error-view">
+        <h1>
+          Whoops. Looks like we got here without any players... Where'd
+          everybody go?
+        </h1>
+      </div>
+    );
+  }
+
   const winner = players
     .filter((p) => p.completedPhase === 10)
     .sort((a, b) => a.lastCommittedScore - b.lastCommittedScore)[0];

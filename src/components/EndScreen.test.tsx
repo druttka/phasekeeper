@@ -22,7 +22,7 @@ describe("EndScreen", () => {
       );
 
       const errorText = getByTestId("error-view");
-      expect(errorText).toHaveLength(1);
+      expect(errorText).toHaveTextContent("Whoops");
     });
   });
 });
