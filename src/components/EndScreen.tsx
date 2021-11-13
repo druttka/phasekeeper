@@ -17,8 +17,8 @@ export const EndScreen: React.FC = () => {
   }
 
   const sortedPlayers = players.sort((a, b) => {
-    if (a.completedPhase > b.completedPhase) return 1;
-    if (b.completedPhase > a.completedPhase) return -1;
+    if (a.completedPhase > b.completedPhase) return -1;
+    if (b.completedPhase > a.completedPhase) return 1;
     return a.lastCommittedScore - b.lastCommittedScore;
   });
 
