@@ -16,8 +16,17 @@ export const EngineContext = createContext<
   [EngineState, ReturnType<typeof createActions>?]
 >([defaultEngineState, undefined]);
 
-export const EngineProvider: React.FC = ({ children }) => {
-  const [state, dispatch] = useReducer(engineReducer, defaultEngineState);
+export interface EngineProviderProps {
+  initialState?: EngineState;
+  reducer?: typeof engineReducer;
+}
+
+export const EngineProvider: React.FC<EngineProviderProps> = ({
+  children,
+  initialState = defaultEngineState,
+  reducer = engineReducer,
+}) => {
+  const [state, dispatch] = useReducer(reducer, initialState);
   const actions = createActions(dispatch);
 
   return (
