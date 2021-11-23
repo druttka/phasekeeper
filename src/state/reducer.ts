@@ -1,6 +1,8 @@
-import { EngineState, GameAction } from "./models";
-
-const LocalStorageKeyForSavedState = "stored-game";
+import {
+  EngineState,
+  GameAction,
+  LocalStorageKeyForSavedState,
+} from "./models";
 
 type EngineReducer = (state: EngineState, action: GameAction) => EngineState;
 

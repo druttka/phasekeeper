@@ -1,5 +1,6 @@
 import React, { useContext, useState } from "react";
 
+import { LocalStorageKeyForSavedState } from "../state";
 import { EngineContext } from "../state/EngineContext";
 
 const Roster: React.FC = () => {
@@ -55,6 +56,7 @@ export const GameSetup: React.FC = () => {
   const [{ players }, actions] = useContext(EngineContext);
 
   const hasAtLeastTwoPlayers = players && players.length > 1;
+  const hasSavedState = !!localStorage.getItem(LocalStorageKeyForSavedState);
 
   return (
     <div>
@@ -76,10 +78,19 @@ export const GameSetup: React.FC = () => {
       <button
         disabled={!hasAtLeastTwoPlayers}
         onClick={(e) => {
+          actions?.clearSavedState();
           actions?.start();
         }}
       >
         Let's play!
+      </button>
+      <button
+        disabled={!hasSavedState}
+        onClick={(e) => {
+          actions?.restoreSavedState();
+        }}
+      >
+        Resume
       </button>
       <div className="Game-setup-instruction">
         Wish this site was an app you could use offline? Try "Add to Home

@@ -1,9 +1,13 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 
 import { EngineContext } from "../state/EngineContext";
 
 export const EndScreen: React.FC = () => {
   const [{ players }, actions] = useContext(EngineContext);
+
+  useEffect(() => {
+    actions?.clearSavedState();
+  }, [actions]);
 
   if (players.length < 1) {
     return (

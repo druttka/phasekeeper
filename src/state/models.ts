@@ -1,3 +1,5 @@
+export const LocalStorageKeyForSavedState = "stored-game";
+
 export interface PlayerState {
   name?: string;
   playerId: number;
