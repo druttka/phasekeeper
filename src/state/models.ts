@@ -1,3 +1,5 @@
+export const LocalStorageKeyForSavedState = "stored-game";
+
 export interface PlayerState {
   name?: string;
   playerId: number;
@@ -20,6 +22,9 @@ export type GameAction =
   | { type: "discardStagedScoreAdustments"; data: { playerId: number } }
   | { type: "commitScores" }
   | { type: "removePlayer"; data: { playerId: number } }
+  | { type: "saveGameState" }
+  | { type: "restoreSavedState" }
+  | { type: "clearSavedState" }
   | { type: "reset" };
 
 export interface EngineState {

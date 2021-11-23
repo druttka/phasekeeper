@@ -18,5 +18,8 @@ export const createActions = (dispatch: Dispatch<GameAction>) => {
     reset: () => dispatch({ type: "reset" }),
     removePlayer: (playerId: number) =>
       dispatch({ type: "removePlayer", data: { playerId } }),
+    saveState: () => dispatch({ type: "saveGameState" }),
+    clearSavedState: () => dispatch({ type: "clearSavedState" }),
+    restoreSavedState: () => dispatch({ type: "restoreSavedState" }),
   };
 };

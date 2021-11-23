@@ -133,7 +133,10 @@ export const Scoring: React.FC = () => {
 
       <button
         style={{ marginTop: 10 }}
-        onClick={(e) => actions?.commitScores()}
+        onClick={(e) => {
+          actions?.commitScores();
+          actions?.saveState();
+        }}
       >
         Continue
       </button>
